@@ -31,12 +31,14 @@
 
 ## 📁 Repository Contents
 
-- `project_documentation/` — Kibana NDJSON export + PowerShell scripts + Full setup guide + per-rule & Atomic test result documentation
+- `project_documentation/` — Full setup guide + per-rule & Atomic test result documentation
 - `navigator/` — ATT&CK Navigator JSON layer (import at attack.mitre.org/navigator)
+- `atomic_tests/` — PowerShell scripts to run all tests
+- `detection_rules/` — Kibana NDJSON export
   
 ## 🚀 Quick Start
 
-See [docs/lab_setup.md](docs/lab_setup.md) for the full environment setup guide.
+See [project_documentation/lab_setup.md](project_documentation/lab_setup.md) for the full environment setup guide.
 To run all simulations (isolated lab only!):
 ```powershell
 .\atomic_tests\run_all_tests.ps1
