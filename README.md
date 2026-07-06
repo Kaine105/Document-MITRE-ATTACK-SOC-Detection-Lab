@@ -25,9 +25,9 @@
 |--|--|--|--|
 | T1059.001 | PowerShell Encoded Commands | Execution | ✅ |
 | T1547.001 | Registry Run Key Persistence | Persistence | ✅ |
-| T1078 | New Local Admin Account | Privilege Escalation | ✅ |
-| T1562.001 | Disable Windows Defender | Defense Evasion | ✅ |
+| T1078.003 | New Local Admin Account | Privilege Escalation | ✅ |
 | T1003.001 | LSASS Memory Dump | Credential Access | ✅ |
+| T1082 | System Information Discovery | Discovery | ✅ |
 
 ## 📁 Repository Contents
 
