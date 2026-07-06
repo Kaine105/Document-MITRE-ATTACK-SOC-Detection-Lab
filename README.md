@@ -31,10 +31,8 @@
 
 ## 📁 Repository Contents
 
-- `detection_rules/` — Kibana NDJSON export + per-rule documentation
+- `project_documentation/` — Kibana NDJSON export + PowerShell scripts + Full setup guide + per-rule & Atomic test result documentation
 - `navigator/` — ATT&CK Navigator JSON layer (import at attack.mitre.org/navigator)
-- `atomic_tests/` — PowerShell scripts and test result documentation
-- `docs/` — Full setup guide and architecture
   
 ## 🚀 Quick Start
 
