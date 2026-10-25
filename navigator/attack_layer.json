@@ -1,0 +1,96 @@
+{
+  "name": "SOC Detection Lab Coverage",
+  "versions": {
+    "attack": "15",
+    "navigator": "5.3.2",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Detection coverage from MITRE ATT&CK SOC Detection Lab. Custom Elastic SIEM rules validated with Atomic Red Team on Windows 11.",
+  "filters": {
+    "platforms": ["Windows"]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "average",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false
+  },
+  "hideDisabled": true,
+  "techniques": [
+    {
+      "techniqueID": "T1059.001",
+      "tactic": "execution",
+      "color": "#4caf50",
+      "comment": "Rule: Encoded PowerShell Execution | Validated with Atomic T1059.001 Test 1 | Mimikatz execution captured via Event ID 4104 and Sysmon Event ID 1",
+      "enabled": true,
+      "score": 100
+    },
+    {
+      "techniqueID": "T1547.001",
+      "tactic": "persistence",
+      "color": "#4caf50",
+      "comment": "Rule: Registry Run Key Persistence | Validated with Atomic T1547.001 Test 1 | Sysmon Event ID 13, HKU SID path format confirmed and rule updated to match",
+      "enabled": true,
+      "score": 100
+    },
+    {
+      "techniqueID": "T1562.001",
+      "tactic": "defense-evasion",
+      "color": "#4caf50",
+      "comment": "Rule: Windows Defender Disabled via PowerShell | Validated with Atomic T1562.001 | Set-MpPreference -DisableRealtimeMonitoring detected",
+      "enabled": true,
+      "score": 100
+    },
+    {
+      "techniqueID": "T1003.001",
+      "tactic": "credential-access",
+      "color": "#4caf50",
+      "comment": "Rule: LSASS Memory Dump via ProcDump | Validated with Atomic T1003.001 Test 1 | Three-hop chain confirmed: powershell.exe -> cmd.exe -> procdump.exe -> procdump64.exe | Rule uses RLIKE command-line matching, launcher-agnostic",
+      "enabled": true,
+      "score": 100
+    },
+    {
+      "techniqueID": "T1082",
+      "tactic": "discovery",
+      "color": "#4caf50",
+      "comment": "Rule: System Information Discovery | Validated with Atomic T1082 Test 1 | Covers systeminfo.exe, hostname.exe, cmd.exe chaining, wmic os get | S-1-5-18 exclusion removed after testing revealed it blocked cmd.exe and reg.exe detection",
+      "enabled": true,
+      "score": 100
+    },
+    {
+      "techniqueID": "T1012",
+      "tactic": "discovery",
+      "color": "#4caf50",
+      "comment": "Rule: Query Registry | Validated via reg.exe query HKLM\\SYSTEM\\CurrentControlSet\\Services\\Disk\\Enum captured during T1082 test | Scoped to sensitive registry paths",
+      "enabled": true,
+      "score": 100
+    },
+    {
+      "techniqueID": "T1078.003",
+      "tactic": "privilege-escalation",
+      "color": "#ff9800",
+      "comment": "Partial coverage | Event IDs 4720 and 4732 captured | EQL sequence rule written but S-1-5-32-544 (Administrators group) not confirmed in test — test only added to Users group (S-1-5-32-545) | Detection strategy reference: DET0447, DET0583",
+      "enabled": true,
+      "score": 50
+    }
+  ],
+  "gradient": {
+    "colors": ["#ff6666", "#ffe766", "#8ec843"],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    { "label": "Full Coverage — Rule Validated with Atomic Red Team", "color": "#4caf50" },
+    { "label": "Partial Coverage — Telemetry Captured, Rule Needs Refinement", "color": "#ff9800" },
+    { "label": "No Coverage", "color": "#ff6666" }
+  ],
+  "metadata": [],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#dddddd",
+  "selectTechniquesAcrossTactics": false,
+  "selectSubtechniquesWithParent": false
+}
